@@ -17,9 +17,10 @@
 
 (defn f
   [fn-1 fn-2 fn-3 count n]
-  (cond
-   (= count n) (+ fn-1 (* 2 fn-2) (* 3 fn-3))
-   :else (f (+ fn-1 (* 2 fn-2) (* 3 fn-3)) fn-1 fn-2 (+ count 1) n)))
+  (let [fn (+ fn-1 (* 2 fn-2) (* 3 fn-3))]
+       (cond
+        (= count n) fn
+        :else (f fn fn-1 fn-2 (+ count 1) n))))
 
 (defn f-iter
   "Computes f(n) using an iterative process"
